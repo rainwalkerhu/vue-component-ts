@@ -35,7 +35,6 @@ export default {
       let openingTag = source.match(regex)
       if (!openingTag) return '';
       else openingTag = openingTag[0]
-      debugger
       console.log(source.indexOf(openingTag), openingTag.length, source.lastIndexOf(`</${type}>`));
       return source.slice(source.indexOf(openingTag)+ openingTag.length, source.lastIndexOf(`</${type}>`))
     },
