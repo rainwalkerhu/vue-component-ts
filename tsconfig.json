@@ -5,6 +5,7 @@
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
+    "noImplicitAny": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "esModuleInterop": true,
@@ -35,6 +36,7 @@
     "tests/**/*.tsx"
   ],
   "exclude": [
+    "src/**/*.js",
     "node_modules"
   ]
 }
