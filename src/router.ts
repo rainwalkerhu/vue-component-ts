@@ -33,6 +33,11 @@ export default new Router({
       path: '/table',
       name: 'table',
       component: () => import('./views/table-render.vue')
+    },
+    {
+      path: '/table-slot',
+      name: 'table-slot',
+      component: () => import('./views/table-slot.vue')
     }
   ]
 })

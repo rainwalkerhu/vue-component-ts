@@ -32,7 +32,6 @@
               } else {
                 edit = row.name;
               }
-
               return h('div', [
                 edit
               ]);
