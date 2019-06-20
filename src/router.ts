@@ -23,6 +23,16 @@ export default new Router({
       path: '/display',
       name: 'display',
       component: () => import('./views/display.vue')
+    },
+    {
+      path: '/alert',
+      name: 'alert',
+      component: () => import('./views/alert.vue')
+    },
+    {
+      path: '/table',
+      name: 'table',
+      component: () => import('./views/table-render.vue')
     }
   ]
 })
