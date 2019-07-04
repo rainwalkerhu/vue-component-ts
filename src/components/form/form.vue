@@ -14,6 +14,11 @@ export default {
       type: Object
     }
   },
+  provide() {
+    return {
+      form: this
+    };
+  },
   data() {
     return {
       fields: []
