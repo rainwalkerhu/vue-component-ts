@@ -1,14 +1,37 @@
 <template>
   <div class="form">
     <h1 style="color: rgb(0, 127, 255)">具有校验功能的表单</h1>
+    <i-form :model="formValidate" :rules="ruleValidate">
+      <i-form-item label="用户名" prop="name">
+        <i-input v-model="formValidate.name"></i-input>
+      </i-form-item>
+      <i-form-item label="邮箱" prop="mail">
+        <i-input v-model="formValidate.mail"></i-input>
+      </i-form-item>
+    </i-form>
   </div>
 </template>
 <script>
-export default {
-  methods: {},
+import iForm from "../components/form/form.vue";
+import iFormItem from "../components/form/form-item.vue";
+import iInput from "../components/input/input.vue";
 
+export default {
+  components: { iForm, iFormItem, iInput },
   data() {
-    return {};
+    return {
+      formValidate: {
+        name: "walker",
+        mail: "nerver told"
+      },
+      ruleValidate: {
+        name: [{ required: true, message: "用户名不能为空", trigger: "blur" }],
+        mail: [
+          { required: true, message: "邮箱不能为空", trigger: "blur" },
+          { type: "email", message: "邮箱格式不正确", trigger: "blur" }
+        ]
+      }
+    };
   }
 };
 </script>
