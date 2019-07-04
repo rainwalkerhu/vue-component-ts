@@ -1,8 +1,8 @@
 <template>
   <div class="i-form-item_container">
-    <label v-if="label" :class="{ 'i-form-item-label-required': isRequired }">{{
-      label
-    }}</label>
+    <label v-if="label" :class="{ 'i-form-item-label-required': isRequired }">
+      {{ label }}
+    </label>
     <div class="i-form-item_content">
       <slot></slot>
       <div v-if="validateState === 'error'" class="i-form-item-message">
@@ -44,8 +44,15 @@ export default {
   mounted() {
     // 如果没有传入 prop，则无需校验，也就无需缓存
     if (this.prop) {
-      this.dispatch("iForm", "on-form-item-add", this);
-      this.setRules();
+      // 如果没有传入 prop，则无需校验，也就无需缓存
+      if (this.prop) {
+        this.dispatch("iForm", "on-form-item-add", this);
+
+        // 设置初始值，以便在重置时恢复默认值
+        this.initialValue = this.fieldValue;
+
+        this.setRules();
+      }
     }
   },
   methods: {
@@ -111,6 +118,13 @@ export default {
     },
     onFieldChange() {
       this.validate("change");
+    },
+    // 重置数据
+    resetField() {
+      this.validateState = "";
+      this.validateMessage = "";
+
+      this.form.model[this.prop] = this.initialValue;
     }
   },
   // 组件销毁前，将实例从 Form 的缓存中移除
