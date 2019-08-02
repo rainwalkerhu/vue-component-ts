@@ -1,9 +1,18 @@
 <template>
   <div id="app">
+    <shot-cut></shot-cut>
     <router-view />
   </div>
 </template>
+<script>
+import ShotCut from "./views/shot-cut";
 
+export default {
+  components: {
+    ShotCut
+  }
+};
+</script>
 <style lang="scss">
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
