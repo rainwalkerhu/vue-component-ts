@@ -15,43 +15,43 @@ export default {
     return {
       lastShot: null,
       dialogVisible: false
-    }
+    };
   },
   created() {
-    const _this = this
+    const _this = this;
     new kscreenshot({
       key: 65,
-      cancelCB: () => { },
+      cancelCB: () => {},
       endCB: lastShot => {
-        _this.lastShot = lastShot
-        _this.showImage()
+        _this.lastShot = lastShot;
+        _this.showImage();
       }
     });
   },
   methods: {
     showImage() {
-      this.dialogVisible = true
+      this.dialogVisible = true;
     },
     download() {
-      return new Promise((resolve) => {
-        let imgUrl = this.lastShot
-        let a = document.createElement('a')
-        if ('download' in a) {
-          a.href = imgUrl
-          a.download = (new Date()).getTime() + '.png'
+      return new Promise(resolve => {
+        let imgUrl = this.lastShot;
+        let a = document.createElement("a");
+        if ("download" in a) {
+          a.href = imgUrl;
+          a.download = new Date().getTime() + ".png";
 
-          let event = document.createEvent('MouseEvents')
-          event.initEvent('click', false, false)
-          a.dispatchEvent(event)
+          let event = document.createEvent("MouseEvents");
+          event.initEvent("click", false, false);
+          a.dispatchEvent(event);
         } else {
-          let newImgUrl = imgUrl.replace('image/png', 'image/octet-stream')
-          window.location.href = newImgUrl
+          let newImgUrl = imgUrl.replace("image/png", "image/octet-stream");
+          window.location.href = newImgUrl;
         }
-        resolve()
-      })
+        resolve();
+      });
     }
   }
-}
+};
 </script>
 <style lang="postcss" scoped>
 .shot-cut {

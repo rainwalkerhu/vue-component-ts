@@ -1,15 +1,18 @@
 <template>
   <div id="app">
-    <shot-cut></shot-cut>
+    <shot-cut />
+    <context-menu />
     <router-view />
   </div>
 </template>
 <script>
 import ShotCut from "./views/shot-cut";
+import ContextMenu from "./views/context-menu";
 
 export default {
   components: {
-    ShotCut
+    ShotCut,
+    ContextMenu
   }
 };
 </script>
